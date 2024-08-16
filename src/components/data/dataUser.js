@@ -80,7 +80,7 @@ export const dataServicios=[
     {
         title:'Manicura',
         text:`Manicura: Cuidado y embellecimiento de las uñas, incluyendo técnicas como el esmaltado permanente, uñas de gel, y decoraciones personalizadas.`,
-        imageUrl:'/manicure1.jpEg'
+        imageUrl:'/manicure1.jpeg'
     },
     {
         title:'Pedicura',
