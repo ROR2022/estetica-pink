@@ -31,7 +31,7 @@ const Contacto = () => {
   const handleChanges = (e: any) => {
     const { name, value } = e.target;
 
-    if (name === "email") {
+    if (name === "nombre") {
       setNombre(value);
     } else {
       setComments(value);
