@@ -5,6 +5,7 @@ export const registerUser = async (user) => {
   try {
     console.log("Registering: ", user);
     const response = await axios.post(`${hostURL}/api/auth/register`, user);
+    console.log("Response Register: ", response);
     return response.data;
   } catch (error) {
     console.log(error);
