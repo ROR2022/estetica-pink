@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import Image from "next/image";
 import { registerUser } from "@/api/rorUserApi";
 import Modal from "../Modal/Modal";
+import Link from "next/link";
 
 export const dataAvatares = [
   {
@@ -98,6 +99,15 @@ export default function SignUp() {
         <h2 className="text-2xl font-bold text-center text-gray-800">
           Registro
         </h2>
+        <div>
+          <p className="text-sm text-center text-gray-600">
+            ¿Ya tienes cuenta?{" "}
+            <Link href="/signin">
+              <span className="text-indigo-600">Inicia sesión</span>
+            </Link>
+          </p>
+        </div>
+
         <Formik
           initialValues={initialValues}
           validationSchema={schema}
