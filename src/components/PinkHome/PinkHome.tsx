@@ -5,6 +5,7 @@ import Casos from '../Casos/Casos'
 import Servicios from '../Servicios/Servicios'
 import Contacto from '../Contacto/Contacto'
 import ShowCat from './ShowCat'
+import Resenas from '../Resenas/Resenas'
 
 const PinkHome = () => {
   return (
@@ -12,6 +13,7 @@ const PinkHome = () => {
     
     >
       <ShowCat />
+      <Resenas />
       <MainCarousel />
       
       <Casos />
