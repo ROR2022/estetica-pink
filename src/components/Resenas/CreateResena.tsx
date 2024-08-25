@@ -23,6 +23,7 @@ const CreateResena = () => {
     const dataResena = {
       resena: values.resena,
       calificacion: values.stars,
+      siteResena: "esteticaPink"
     };
     setLoading(true);
     try {
