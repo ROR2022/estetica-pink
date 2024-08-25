@@ -8,7 +8,7 @@ export const registerUser = async (user) => {
     console.log("Response Register: ", response);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log('Error Registering',error);
     return error.response.data;
   }
 };
