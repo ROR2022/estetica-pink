@@ -11,7 +11,7 @@ import { initialState } from '@/redux/userSlice';
 
 const Logout = () => {
   const user = useSelector((state: any) => state.user);
-  const [storedUser, setStoredUser] = useLocalStorage<DataUser>('user', user);
+  const [storedUser, setStoredUser] = useLocalStorage<DataUser>('userEsteticaPink', user);
   const dispatch = useDispatch();
   const router = useRouter();
   const handleClose = () => {

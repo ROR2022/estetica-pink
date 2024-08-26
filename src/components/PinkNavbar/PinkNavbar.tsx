@@ -50,7 +50,7 @@ function classNames(...classes: any[]) {
 const PinkNavbar = () => {
   const [navigation, setNavigation] = useState(navigationInit);
   const user = useSelector((state: any) => state.user);
-  const [storedUser, setStoredUser] = useLocalStorage<DataUser>("user", user);
+  const [storedUser, setStoredUser] = useLocalStorage<DataUser>("userEsteticaPink", user);
   const dispatch = useDispatch();
 
   useEffect(() => {

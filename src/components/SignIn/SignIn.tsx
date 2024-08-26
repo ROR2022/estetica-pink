@@ -14,7 +14,7 @@ export default function SignIn() {
   const [loading, setLoading] = useState(false);
   const [loginSuccess, setLoginSuccess] = useState(false);
   const user = useSelector((state: any) => state.user);
-  const [storedUser, setStoredUser] = useLocalStorage<DataUser>("user", user);
+  const [storedUser, setStoredUser] = useLocalStorage<DataUser>("userEsteticaPink", user);
   const dispatch = useDispatch();
   const router = useRouter();
 
