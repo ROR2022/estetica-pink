@@ -1,26 +1,64 @@
-"use client"
-import React from 'react'
-import MainCarousel from './MainCarousel'
-import Casos from '../Casos/Casos'
-import Servicios from '../Servicios/Servicios'
-import Contacto from '../Contacto/Contacto'
-import ShowCat from './ShowCat'
-import Resenas from '../Resenas/Resenas'
+"use client";
+import React, {useEffect} from "react";
+import MainCarousel from "./MainCarousel";
+import Casos from "../Casos/Casos";
+import Servicios from "../Servicios/Servicios";
+import Contacto from "../Contacto/Contacto";
+import ShowCat from "./ShowCat";
+import Resenas from "../Resenas/Resenas";
+import { useSelector } from "react-redux";
+import Link from "next/link";
+import ShowMemes from "../CreateMeme/ShowMemes";
 
 const PinkHome = () => {
+  const user = useSelector((state: any) => state.user);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    console.log("user:", user);
+  }, []);
   return (
-    <div 
-    
-    >
+    <div>
+      {user && user.email !== "" ? (
+        <div
+          style={{
+            marginTop: "20px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Link href="/create-meme">
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+              Crear meme
+            </button>
+          </Link>
+        </div>
+      ) : (
+        <div
+          style={{
+            marginTop: "20px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Link href="/signin">
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+              Inicia sesión para crear memes
+            </button>
+          </Link>
+        </div>
+      )}
+      <ShowMemes />
+
       <ShowCat />
       <Resenas />
       <MainCarousel />
-      
+
       <Casos />
       <Servicios />
       <Contacto />
-      </div>
-  )
-}
+    </div>
+  );
+};
 
-export default PinkHome
+export default PinkHome;

@@ -10,6 +10,7 @@ const basicUrl =
 const basicUrl2 = "https://cataas.com/cat";
 const ShowCat = () => {
   const [cat, setCat] = useState<any>(null);
+  const [catUrl, setCatUrl] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     fetchCat();
@@ -25,14 +26,35 @@ const ShowCat = () => {
         },
       });
       const reader = new FileReader();
+      
       reader.readAsDataURL(response.data);
       reader.onloadend = () => {
+        
         setCat(reader.result);
         setLoading(false);
       };
+      //asignaremos la url de la imagen a la variable catUrl
+      //setCatUrl(response.request.responseURL);
+      const blob = new Blob([response.data], { type: "image/jpeg" });
+      const imageUrl = URL.createObjectURL(blob);
+      setCatUrl(imageUrl); // Actualiza catBlobUrl con la URL del Blob
+      setLoading(false);
     } catch (error) {
       console.error(error);
       setLoading(false);
+    }
+  };
+
+  const handleOpenImageInNewTab = () => {
+    //Abrimos la imagen en una nueva pestaña, apartir de los datos de la imagen en la variable cat
+
+    if (catUrl) {
+      const link = document.createElement("a");
+      link.href = catUrl;
+      link.target = "_blank";
+      link.click();
+      // Liberar la URL después de abrir
+      URL.revokeObjectURL(catUrl);
     }
   };
   return (
@@ -53,13 +75,14 @@ const ShowCat = () => {
 
         {!loading && "Quiero un Gato"}
       </button>
-      {cat && (
+      {catUrl && (
         <Image
-          src={cat}
+        onClick={handleOpenImageInNewTab}
+          src={catUrl}
           alt="cat"
           width={300}
           height={300}
-          style={{ borderRadius: "10%" }}
+          style={{ borderRadius: "10%", cursor: "pointer" }}
         />
       )}
     </div>
