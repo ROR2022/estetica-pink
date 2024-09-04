@@ -9,6 +9,7 @@ import Resenas from "../Resenas/Resenas";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import ShowMemes from "../CreateMeme/ShowMemes";
+import InstallButton from "../InstallButton/InstallButton";
 
 const PinkHome = () => {
   const user = useSelector((state: any) => state.user);
@@ -19,6 +20,7 @@ const PinkHome = () => {
   }, []);
   return (
     <div>
+      <InstallButton />
       {user && user.email !== "" ? (
         <div
           style={{
