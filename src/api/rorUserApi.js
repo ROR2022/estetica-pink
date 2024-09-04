@@ -111,3 +111,13 @@ export const createMeme= async (dataMeme, token) => {
     return error.response.data;
   }
 }
+
+export const postDebugMsg = async (msg) => {
+  try {
+    const response = await axios.post(`${hostURL}/api/debug`, { msg });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return error.response.data;
+  }
+}

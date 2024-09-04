@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import Link from "next/link";
 import ShowMemes from "../CreateMeme/ShowMemes";
 import InstallButton from "../InstallButton/InstallButton";
+import { postDebugMsg } from "@/api/rorUserApi";
 
 const PinkHome = () => {
   const user = useSelector((state: any) => state.user);
@@ -17,6 +18,7 @@ const PinkHome = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     console.log("user:", user);
+    postDebugMsg('+++++ PinkHome Iniciando debug +++++');
   }, []);
   return (
     <div>
