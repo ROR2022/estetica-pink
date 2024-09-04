@@ -43,10 +43,10 @@ const InstallButton: React.FC = () => {
   return (
     <div
     style={{
-      width: "100%",
-      display: "block",
-      marginLeft: "auto",
-      marginRight: "auto",
+      width: "100vw",
+      
+      display: "flex",
+      justifyContent: "center",
       marginTop: "20px",
     }}
     >
