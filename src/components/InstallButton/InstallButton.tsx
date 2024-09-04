@@ -1,3 +1,4 @@
+"use client";
 // components/InstallButton.tsx
 import React, { useState, useEffect } from 'react';
 //importar el icono de instalación de react-icons 
@@ -5,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 //importar Button de material ui
 //import { Button } from '@mui/material';
 import { AiOutlineDownload } from 'react-icons/ai';
+import { postDebugMsg } from '@/api/rorUserApi';
 
 const InstallButton: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null);
@@ -16,7 +18,8 @@ const InstallButton: React.FC = () => {
       setDeferredPrompt(e);
       setIsVisible(true);
     };
-
+    console.log('InstallButton useEffect...');
+    postDebugMsg('+++++ InstallButton Iniciando debug +++++');
     window.addEventListener('beforeinstallprompt', handler);
 
     return () => window.removeEventListener('beforeinstallprompt', handler);
