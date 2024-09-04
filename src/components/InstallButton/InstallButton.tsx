@@ -22,13 +22,49 @@ const InstallButton: React.FC = () => {
       setIsVisible(true);
     };
     const dataNavigator = isMobile(window.navigator);
-    console.log('Datos isMobile:...', dataNavigator);
+    const android:any= dataNavigator.android;
+    const apple:any= dataNavigator.apple;
+    //console.log('Datos isMobile:...', dataNavigator);
+    //recorrer el objeto android para ver sus propiedades y valores para determinar si es un dispositivo android
+    let isAndroid=false;
+    let isApple=false;
+    for (const key in android) {
+      if(android[key]===true){
+        console.log('Es un dispositivo android');
+        isAndroid=true;
+      }
+    }
+    for (const key in apple) {
+      if(apple[key]===true){
+        console.log('Es un dispositivo apple');
+        isApple=true;
+      }
+    }
+    if(isAndroid){
+      //console.log('Es un dispositivo android');
+      window.addEventListener('beforeinstallprompt', handler);
+    }else{
+      const objNavigator:any=window.navigator;
+      if (objNavigator.standalone) {
+        // The web app is installed as a standalone app on the home screen
+        postDebugMsg('+++++ Applicacion ya instalada debug +++++');
+      } else {
+        // The web app is not installed as a standalone app on the home screen
+        postDebugMsg('+++++ Iniciando Instalacion de Applicacion debug +++++');
+        setIsVisible(true);
+      }
+    }
 
-    console.log('InstallButton useEffect...');
-    postDebugMsg('+++++ InstallButton Iniciando debug +++++', dataNavigator);
-    window.addEventListener('beforeinstallprompt', handler);
+    //console.log('InstallButton useEffect...');
+    //postDebugMsg('+++++ InstallButton Iniciando debug +++++', dataNavigator);
+    
 
-    return () => window.removeEventListener('beforeinstallprompt', handler);
+    return () => {
+      if(isAndroid===true){
+        window.removeEventListener('beforeinstallprompt', handler);
+      }
+      
+    }
   }, []);
 
   const handleInstallClick = async () => {

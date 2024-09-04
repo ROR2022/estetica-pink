@@ -12,10 +12,17 @@ import "slick-carousel/slick/slick-theme.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+interface CustomMetadata extends Metadata {
+  "apple-mobile-web-app-capable"?: "yes" | "no";
+  "apple-touch-icon"?: string;
+}
+
+export const metadata: CustomMetadata = {
   title: "Estetica Pink",
   description: "Sandra Jimenez - Estilista",
   manifest: "/manifest.json",
+  "apple-mobile-web-app-capable": "yes",
+  "apple-touch-icon": "/icon-192x192.png",
   keywords: ["Estetica", "Pink", "Sandra Jimenez", "Estilista"],
 };
 
