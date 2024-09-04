@@ -14,6 +14,7 @@ import isMobile from 'ismobilejs';
 const InstallButton: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -52,6 +53,7 @@ const InstallButton: React.FC = () => {
         // The web app is not installed as a standalone app on the home screen
         postDebugMsg('+++++ Iniciando Instalacion de Applicacion debug +++++');
         setIsVisible(true);
+        setIsIOS(true);
       }
     }
 
@@ -68,7 +70,9 @@ const InstallButton: React.FC = () => {
   }, []);
 
   const handleInstallClick = async () => {
-    if (!deferredPrompt) return;
+    //if (!deferredPrompt) return;
+    
+    if(!isIOS&&deferredPrompt){
     const promptEvent = deferredPrompt as any;
     promptEvent.prompt();
     const { outcome } = await promptEvent.userChoice;
@@ -79,6 +83,12 @@ const InstallButton: React.FC = () => {
     }
     setDeferredPrompt(null);
     setIsVisible(false);
+  }
+
+   if(isIOS){
+    // Caso para Apple: Se puede mostrar una guía para que el usuario instale manualmente
+    alert("Para instalar esta aplicación en su dispositivo Apple, toque el icono de compartir y luego seleccione 'Agregar a la pantalla de inicio'.");
+   }
   };
 
   if (!isVisible) {
