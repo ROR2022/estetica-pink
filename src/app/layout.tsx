@@ -15,6 +15,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Estetica Pink",
   description: "Sandra Jimenez - Estilista",
+  manifest: "/manifest.json",
+  keywords: ["Estetica", "Pink", "Sandra Jimenez", "Estilista"],
 };
 
 export default function RootLayout({
