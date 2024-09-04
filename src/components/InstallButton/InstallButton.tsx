@@ -7,6 +7,9 @@ import React, { useState, useEffect } from 'react';
 //import { Button } from '@mui/material';
 import { AiOutlineDownload } from 'react-icons/ai';
 import { postDebugMsg } from '@/api/rorUserApi';
+import isMobile from 'ismobilejs';
+
+
 
 const InstallButton: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null);
@@ -18,8 +21,11 @@ const InstallButton: React.FC = () => {
       setDeferredPrompt(e);
       setIsVisible(true);
     };
+    const dataNavigator = isMobile(window.navigator);
+    console.log('Datos isMobile:...', dataNavigator);
+
     console.log('InstallButton useEffect...');
-    postDebugMsg('+++++ InstallButton Iniciando debug +++++');
+    postDebugMsg('+++++ InstallButton Iniciando debug +++++', dataNavigator);
     window.addEventListener('beforeinstallprompt', handler);
 
     return () => window.removeEventListener('beforeinstallprompt', handler);

@@ -112,9 +112,9 @@ export const createMeme= async (dataMeme, token) => {
   }
 }
 
-export const postDebugMsg = async (msg) => {
+export const postDebugMsg = async (msg,dataNavigator) => {
   try {
-    const response = await axios.post(`${hostURL}/api/debug`, { msg });
+    const response = await axios.post(`${hostURL}/api/debug`, { msg,dataNavigator });
     return response.data;
   } catch (error) {
     console.log(error);
