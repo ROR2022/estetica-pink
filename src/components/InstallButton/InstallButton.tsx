@@ -41,6 +41,15 @@ const InstallButton: React.FC = () => {
   }
 
   return (
+    <div
+    style={{
+      width: "100%",
+      display: "block",
+      marginLeft: "auto",
+      marginRight: "auto",
+      marginTop: "20px",
+    }}
+    >
     <button
   className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
   onClick={handleInstallClick}
@@ -48,6 +57,7 @@ const InstallButton: React.FC = () => {
   <AiOutlineDownload />
   Install
 </button>
+</div>
   );
 };
 
